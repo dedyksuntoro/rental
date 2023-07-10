@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 10/07/2023 21:59:22
+ Date: 10/07/2023 23:02:33
 */
 
 SET NAMES utf8mb4;
@@ -31,11 +31,12 @@ CREATE TABLE `tbl_hak_akses`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_hak_akses
 -- ----------------------------
+INSERT INTO `tbl_hak_akses` VALUES (1, 'Super User', 1, 1, 1, 1, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for tbl_pengguna
