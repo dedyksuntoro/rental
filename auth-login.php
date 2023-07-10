@@ -3,7 +3,7 @@ include 'konfigurasi.php';
 
 session_start();
 if (isset($_SESSION['email'])) {
-    header("Location: index.php");
+    header("Location: index.php?index=active");
 }
 
 if (isset($_POST['submit'])) {
@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
   
     if ($verify) {
         $_SESSION['email'] = $row['email'];
-        header("Location: index.php");
+        header("Location: index.php?index=active");
     } else {
         echo "<script>alert('Email atau password Anda salah. Silahkan coba lagi!')</script>";
     }

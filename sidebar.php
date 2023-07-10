@@ -33,14 +33,21 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item active ">
-                    <a href="index.php" class='sidebar-link'>
+                <li class="sidebar-item <?php echo $_GET['index'] ?>">
+                    <a href="index.php?index=active" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
                 <li class="sidebar-title">Sistem</li>
+
+                <li class="sidebar-item  <?php echo $_GET['hak-akses'] ?>">
+                    <a href="hak-akses.php?hak-akses=active" class='sidebar-link'>
+                        <i class="bi bi-lock-fill"></i>
+                        <span>Hak Akses</span>
+                    </a>
+                </li>
 
                 <li class="sidebar-item  ">
                     <a href="auth-logout.php" class='sidebar-link'>

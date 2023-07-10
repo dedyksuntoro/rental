@@ -6,6 +6,13 @@ if (!isset($_SESSION['email'])) {
     header("Location: auth-login.php");
 }
 
+if ($_GET['index'] != 'active') {
+    session_start();
+    session_destroy();
+
+    header("Location: auth-login.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +30,7 @@ if (!isset($_SESSION['email'])) {
             </header>
 
             <div class="page-heading">
-                <h3>Profile Statistics</h3>
+                <h3>Dashboard</h3>
             </div>
             <div class="page-content">
                 <section class="row">
