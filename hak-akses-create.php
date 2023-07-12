@@ -25,13 +25,11 @@ if (isset($_POST['submit'])) {
 
     if (mysqli_query($conn, $sql)) {
         mysqli_close($conn);
-        session_start();
         $_SESSION['pesannya'] = '<div class="alert alert-light-success color-success"><i class="bi bi-check-circle"></i> Data berhasil ditambahkan.</div>';
         header('Location: hak-akses.php?hak-akses=active');
     } else {
         // var_dump("Error: " . $sql . "<br>" . mysqli_error($conn));
         mysqli_close($conn);
-        session_start();
         $_SESSION['pesannya'] = '<div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> Data gagal ditambahkan.</div>';
         header('Location: hak-akses.php?hak-akses=active');
     }

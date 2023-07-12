@@ -13,6 +13,23 @@ if ($_GET['hak-akses'] != 'active') {
     header("Location: auth-login.php");
 }
 
+if (isset($_POST['delete'])) {
+    $id = $_POST['id'];
+
+    $sql_delete = "DELETE FROM tbl_hak_akses WHERE id = $id";
+
+    if (mysqli_query($conn, $sql_delete)) {
+        mysqli_close($conn);
+        $_SESSION['pesannya'] = '<div class="alert alert-light-success color-success"><i class="bi bi-check-circle"></i> Data berhasil dihapus.</div>';
+        header('Location: hak-akses.php?hak-akses=active');
+    } else {
+        // var_dump("Error: " . $sql . "<br>" . mysqli_error($conn));
+        mysqli_close($conn);
+        $_SESSION['pesannya'] = '<div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> Data gagal dihapus.</div>';
+        header('Location: hak-akses.php?hak-akses=active');
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,10 +53,10 @@ if ($_GET['hak-akses'] != 'active') {
                 <div class="row" id="table-hover-row">
                     <div class="col-12">
                         <?php
-                            if (isset($_SESSION['pesannya'])) {
-                                echo $_SESSION['pesannya'];
-                                unset($_SESSION['pesannya']);
-                            }
+                        if (isset($_SESSION['pesannya'])) {
+                            echo $_SESSION['pesannya'];
+                            unset($_SESSION['pesannya']);
+                        }
                         ?>
                         <div class="card">
                             <div class="card-header">
@@ -84,9 +101,12 @@ if ($_GET['hak-akses'] != 'active') {
                                                     <td>" . $row['update'] . "</td>
                                                     <td>" . $row['delete'] . "</td>
                                                     <td>
-                                                        <a href='#'><i class='badge-circle badge-circle-light-secondary font-medium-1' data-feather='edit'></i></a>
-                                                        |
-                                                        <a href='#'><i class='badge-circle badge-circle-light-secondary font-medium-1' data-feather='delete'></i></a>
+                                                        <form class='form' method='POST' action=''>
+                                                            <input name='id' value='" . $row['id'] . "' hidden='true'>
+                                                            <button name='edit' class='btn btn-sm icon btn-success'><i class='bi bi-pencil'></i></button>
+                                                            |
+                                                            <button name='delete' class='btn btn-sm icon btn-danger'><i class='bi bi-x'></i></button>
+                                                        </from>
                                                     </td>
                                                 </tr>";
                                         }
