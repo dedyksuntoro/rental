@@ -6,6 +6,7 @@
   overflow: hidden;
   margin-bottom: 24px;
   font-size: 16px;
+  height: 38px;
 }
 .choices:focus {
   outline: none;
@@ -131,7 +132,8 @@
   border: 1px solid #ddd;
   border-radius: 2.5px;
   font-size: 14px;
-  min-height: 44px;
+  min-height: 38px;
+  max-height: 38px;
   overflow: hidden;
 }
 .is-focused .choices__inner, .is-open .choices__inner {
@@ -152,7 +154,7 @@
 
 .choices__list--single {
   display: inline-block;
-  padding: 4px 16px 4px 4px;
+  padding: 1px 16px 4px 4px;
   width: 100%;
 }
 [dir=rtl] .choices__list--single {

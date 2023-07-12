@@ -35,9 +35,15 @@ if ($_GET['hak-akses'] != 'active') {
             <section class="section">
                 <div class="row" id="table-hover-row">
                     <div class="col-12">
+                        <?php
+                            if (isset($_SESSION['pesannya'])) {
+                                echo $_SESSION['pesannya'];
+                                unset($_SESSION['pesannya']);
+                            }
+                        ?>
                         <div class="card">
                             <div class="card-header">
-                                <!-- <h4 class="card-title">Hoverable rows</h4> -->
+                                <a href="hak-akses-create.php?hak-akses=active" class="btn icon icon-left btn-primary"><i data-feather="plus"></i> Tambah Data</a>
                             </div>
                             <div class="card-content">
                                 <div class="card-body">
@@ -46,7 +52,7 @@ if ($_GET['hak-akses'] != 'active') {
                                                 id,
                                                 nama_hak_akses,
                                             IF
-                                                ( tbl_hak_akses.`created` = 1, 'Yes', 'No' ) AS `create`,
+                                                ( tbl_hak_akses.`create` = 1, 'Yes', 'No' ) AS `create`,
                                             IF
                                                 ( tbl_hak_akses.`read` = 1, 'Yes', 'No' ) AS `read`,
                                             IF
@@ -90,62 +96,6 @@ if ($_GET['hak-akses'] != 'active') {
                                     } else {
                                     }
                                     ?>
-                                    <!-- <div class="table-responsive">
-                                        <table class="table table-hover mb-0">
-                                            <thead>
-                                                <tr>
-                                                    <th>NAMA HAK AKSES</th>
-                                                    <th>BUAT</th>
-                                                    <th>LIHAT</th>
-                                                    <th>PEMBARUAN</th>
-                                                    <th>HAPUS</th>
-                                                    <th>TINDAKAN</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-bold-500">Michael Right</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">UI/UX</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Taxes</td>
-                                                    <td><a href="#"><i class="badge-circle badge-circle-light-secondary font-medium-1" data-feather="mail"></i></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-bold-500">Morgan Vanblum</td>
-                                                    <td>$13/hr</td>
-                                                    <td class="text-bold-500">Graphic concepts</td>
-                                                    <td>Remote</td>
-                                                    <td>Shangai,China</td>
-                                                    <td><a href="#"><i class="badge-circle badge-circle-light-secondary font-medium-1" data-feather="mail"></i></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-bold-500">Tiffani Blogz</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">Animation</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Texas</td>
-                                                    <td><a href="#"><i class="badge-circle badge-circle-light-secondary font-medium-1" data-feather="mail"></i></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-bold-500">Ashley Boul</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">Animation</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Texas</td>
-                                                    <td><a href="#"><i class="badge-circle badge-circle-light-secondary font-medium-1" data-feather="mail"></i></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-bold-500">Mikkey Mice</td>
-                                                    <td>$15/hr</td>
-                                                    <td class="text-bold-500">Animation</td>
-                                                    <td>Remote</td>
-                                                    <td>Austin,Texas</td>
-                                                    <td><a href="#"><i class="badge-circle badge-circle-light-secondary font-medium-1" data-feather="mail"></i></a></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div> -->
                                 </div>
                             </div>
                         </div>
