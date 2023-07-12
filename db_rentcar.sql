@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 10/07/2023 23:02:33
+ Date: 12/07/2023 21:48:53
 */
 
 SET NAMES utf8mb4;
@@ -24,19 +24,21 @@ DROP TABLE IF EXISTS `tbl_hak_akses`;
 CREATE TABLE `tbl_hak_akses`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `nama_hak_akses` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `created` int NULL DEFAULT NULL,
+  `create` int NULL DEFAULT NULL,
   `read` int NULL DEFAULT NULL,
   `update` int NULL DEFAULT NULL,
   `delete` int NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_hak_akses
 -- ----------------------------
 INSERT INTO `tbl_hak_akses` VALUES (1, 'Super User', 1, 1, 1, 1, NULL, NULL);
+INSERT INTO `tbl_hak_akses` VALUES (2, 'Admin', 0, 1, 1, 1, '2023-07-12 02:26:55', NULL);
+INSERT INTO `tbl_hak_akses` VALUES (3, 'Editor', 0, 1, 1, 0, '2023-07-12 02:28:40', NULL);
 
 -- ----------------------------
 -- Table structure for tbl_pengguna
