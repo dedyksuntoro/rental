@@ -6,7 +6,7 @@ if (!isset($_SESSION['email'])) {
     header("Location: auth-login.php");
 }
 
-if ($_GET['hak-akses'] != 'active') {
+if ($_GET['kantor'] != 'active') {
     session_start();
     session_destroy();
 
@@ -16,7 +16,7 @@ if ($_GET['hak-akses'] != 'active') {
 if (isset($_POST['delete'])) {
     $id = $_POST['delete'];
 
-    $sql_delete = "DELETE FROM tbl_hak_akses WHERE id = $id";
+    $sql_delete = "DELETE FROM tbl_kantor WHERE id = $id";
 
     if (mysqli_query($conn, $sql_delete)) {
         $_SESSION['pesannya'] = '<div class="alert alert-light-success color-success"><i class="bi bi-check-circle"></i> Data berhasil dihapus.</div>';
@@ -43,7 +43,7 @@ if (isset($_POST['delete'])) {
             </header>
 
             <div class="page-heading">
-                <h3>Hak Akses</h3>
+                <h3>Kantor</h3>
             </div>
             <section class="section">
                 <div class="row" id="table-hover-row">
@@ -56,48 +56,35 @@ if (isset($_POST['delete'])) {
                         ?>
                         <div class="card">
                             <div class="card-header">
-                                <a href="hak-akses-create.php?hak-akses=active" class="btn icon icon-left btn-primary"><i data-feather="plus"></i> Tambah Data</a>
+                                <a href="kantor-create.php?kantor=active" class="btn icon icon-left btn-primary"><i data-feather="plus"></i> Tambah Data</a>
                             </div>
                             <div class="card-content">
                                 <div class="card-body">
                                     <?php
                                     $sql = "SELECT
                                                 id,
-                                                nama_hak_akses,
-                                            IF
-                                                ( tbl_hak_akses.`create` = 1, 'Yes', 'No' ) AS `create`,
-                                            IF
-                                                ( tbl_hak_akses.`read` = 1, 'Yes', 'No' ) AS `read`,
-                                            IF
-                                                ( tbl_hak_akses.`update` = 1, 'Yes', 'No' ) AS `update`,
-                                            IF
-                                                ( tbl_hak_akses.`delete` = 1, 'Yes', 'No' ) AS `delete` 
+                                                nama_kantor,
+                                                alamat_kantor
                                             FROM
-                                                tbl_hak_akses";
+                                                tbl_kantor";
                                     $result = mysqli_query($conn, $sql);
                                     if (mysqli_num_rows($result) > 0) {
                                         echo '<div class="table-responsive">';
                                         echo '<table class="table table-hover mb-0">';
                                         echo '<thead>
                                                 <tr>
-                                                    <th>NAMA HAK AKSES</th>
-                                                    <th>BUAT</th>
-                                                    <th>LIHAT</th>
-                                                    <th>EDIT</th>
-                                                    <th>HAPUS</th>
+                                                    <th>NAMA KANTOR</th>
+                                                    <th>ALAMAT KANTOR</th>
                                                     <th class="text-center" colspan="2">TINDAKAN</th>
                                                 </tr>
                                             </thead>';
                                         echo '<tbody>';
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             echo "<tr>
-                                                    <td>" . $row['nama_hak_akses'] . "</td>
-                                                    <td>" . $row['create'] . "</td>
-                                                    <td>" . $row['read'] . "</td>
-                                                    <td>" . $row['update'] . "</td>
-                                                    <td>" . $row['delete'] . "</td>
+                                                    <td>" . $row['nama_kantor'] . "</td>
+                                                    <td>" . $row['alamat_kantor'] . "</td>
                                                     <td style='width:1%' class='text-center'>
-                                                        <form class='form' method='POST' action='hak-akses-edit.php?hak-akses=active'>
+                                                        <form class='form' method='POST' action='kantor-edit.php?kantor=active'>
                                                             <button name='edit' value='" . $row['id'] . "' class='btn btn-sm icon btn-success'><i class='bi bi-pencil'></i></button>
                                                         </form>
                                                     </td>

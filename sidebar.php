@@ -49,6 +49,13 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item  <?php echo $_GET['kantor'] ?>">
+                    <a href="kantor.php?kantor=active" class='sidebar-link'>
+                        <i class="bi bi-building"></i>
+                        <span>Kantor</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item  ">
                     <a href="auth-logout.php" class='sidebar-link'>
                         <i class="bi bi-power"></i>
