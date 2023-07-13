@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 12/07/2023 21:48:53
+ Date: 14/07/2023 01:08:00
 */
 
 SET NAMES utf8mb4;
@@ -31,14 +31,34 @@ CREATE TABLE `tbl_hak_akses`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_hak_akses
 -- ----------------------------
-INSERT INTO `tbl_hak_akses` VALUES (1, 'Super User', 1, 1, 1, 1, NULL, NULL);
-INSERT INTO `tbl_hak_akses` VALUES (2, 'Admin', 0, 1, 1, 1, '2023-07-12 02:26:55', NULL);
-INSERT INTO `tbl_hak_akses` VALUES (3, 'Editor', 0, 1, 1, 0, '2023-07-12 02:28:40', NULL);
+INSERT INTO `tbl_hak_akses` VALUES (1, 'Super Admin', 1, 1, 1, 1, NULL, '2023-07-13 22:45:24');
+INSERT INTO `tbl_hak_akses` VALUES (12, 'Admin Cabang', 1, 0, 1, 1, '2023-07-13 02:03:35', '2023-07-13 21:29:35');
+INSERT INTO `tbl_hak_akses` VALUES (14, 'Manager', 1, 1, 1, 0, '2023-07-13 06:06:51', NULL);
+
+-- ----------------------------
+-- Table structure for tbl_kantor
+-- ----------------------------
+DROP TABLE IF EXISTS `tbl_kantor`;
+CREATE TABLE `tbl_kantor`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nama_kantor` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `alamat_kantor` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tbl_kantor
+-- ----------------------------
+INSERT INTO `tbl_kantor` VALUES (1, 'Kantor Cabang', 'Jl. Kebenaran', '2023-07-13 04:03:32', '2023-07-14 01:06:06');
+INSERT INTO `tbl_kantor` VALUES (3, 'Kantor Bali', 'Jl. Sesaat', '2023-07-13 06:06:20', NULL);
+INSERT INTO `tbl_kantor` VALUES (4, 'Kantor Kediri', 'Jl. Saja Dulu', '2023-07-13 06:06:33', NULL);
 
 -- ----------------------------
 -- Table structure for tbl_pengguna
