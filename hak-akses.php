@@ -14,7 +14,7 @@ if ($_GET['hak-akses'] != 'active') {
 }
 
 if (isset($_POST['delete'])) {
-    $id = $_POST['id'];
+    $id = $_POST['delete'];
 
     $sql_delete = "DELETE FROM tbl_hak_akses WHERE id = $id";
 
@@ -97,11 +97,12 @@ if (isset($_POST['delete'])) {
                                                     <td>" . $row['update'] . "</td>
                                                     <td>" . $row['delete'] . "</td>
                                                     <td>
-                                                        <form class='form' method='POST' action=''>
-                                                            <input name='id' value='" . $row['id'] . "' hidden='true'>
-                                                            <button name='edit' class='btn btn-sm icon btn-success'><i class='bi bi-pencil'></i></button>
-                                                            |
-                                                            <button name='delete' class='btn btn-sm icon btn-danger'><i class='bi bi-x'></i></button>
+                                                        <form class='form' method='POST' action='hak-akses-edit.php?hak-akses=active'>
+                                                            <button name='edit' value='" . $row['id'] . "' class='btn btn-sm icon btn-success'><i class='bi bi-pencil'></i></button>
+                                                        </from>
+                                                        |
+                                                        <form class='form' method='POST' action='hak-akses.php?hak-akses=active'>
+                                                            <button name='delete' value='" . $row['id'] . "' class='btn btn-sm icon btn-danger'><i class='bi bi-x'></i></button>
                                                         </from>
                                                     </td>
                                                 </tr>";
