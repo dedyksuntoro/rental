@@ -49,6 +49,13 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item  <?php echo $_GET['pengguna'] ?>">
+                    <a href="pengguna.php?pengguna=active" class='sidebar-link'>
+                        <i class="bi bi-people"></i>
+                        <span>Pengguna</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item  <?php echo $_GET['kantor'] ?>">
                     <a href="kantor.php?kantor=active" class='sidebar-link'>
                         <i class="bi bi-building"></i>
