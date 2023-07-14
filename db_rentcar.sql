@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 14/07/2023 01:08:00
+ Date: 15/07/2023 01:23:36
 */
 
 SET NAMES utf8mb4;
@@ -75,11 +75,12 @@ CREATE TABLE `tbl_pengguna`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_pengguna
 -- ----------------------------
-INSERT INTO `tbl_pengguna` VALUES (1, 'Developer', 'Malang', 'developer@email.com', '$2y$10$psfZay83FLt.d13fo1WfB.B8.ifreXeXmXABCgO8.djYNFzhAO6Gi', 0, 1, NULL, '2023-07-10 19:40:02');
+INSERT INTO `tbl_pengguna` VALUES (1, 'Developer', 'Malang', 'developer@email.com', '$2y$10$psfZay83FLt.d13fo1WfB.B8.ifreXeXmXABCgO8.djYNFzhAO6Gi', 1, 1, NULL, '2023-07-15 00:17:27');
+INSERT INTO `tbl_pengguna` VALUES (3, 'Manager', 'Bali', 'manager@email.com', '$2y$10$qYduEu2T8sjbii1pBXqqpeOVcezt4h/asPQUZIi4PrjyTbHsRy3J.', 3, 14, '2023-07-14 05:59:03', '2023-07-15 01:22:33');
 
 SET FOREIGN_KEY_CHECKS = 1;
