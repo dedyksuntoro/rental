@@ -11,5 +11,7 @@
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
 
     <link rel="stylesheet" href="assets/css/shared/iconly.css">
+    <link rel="stylesheet" href="assets/extensions/simple-datatables/style.css">
+    <link rel="stylesheet" href="assets/css/pages/simple-datatables.css">
 
 </head>

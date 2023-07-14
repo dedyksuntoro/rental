@@ -70,7 +70,7 @@ if (isset($_POST['delete'])) {
                                     $result = mysqli_query($conn, $sql);
                                     if (mysqli_num_rows($result) > 0) {
                                         echo '<div class="table-responsive">';
-                                        echo '<table class="table table-hover mb-0">';
+                                        echo '<table class="table table-hover" id="table1">';
                                         echo '<thead>
                                                 <tr>
                                                     <th>NAMA KANTOR</th>
@@ -123,6 +123,9 @@ if (isset($_POST['delete'])) {
     <!-- Need: Apexcharts -->
     <script src="assets/extensions/apexcharts/apexcharts.min.js"></script>
     <script src="assets/js/pages/dashboard.js"></script>
+
+    <script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
+    <script src="assets/js/pages/simple-datatables.js"></script>
 
 </body>
 
