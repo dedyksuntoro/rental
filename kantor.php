@@ -90,7 +90,15 @@ if (isset($_POST['delete'])) {
                                                     </td>
                                                     <td style='width:1%' class='text-center'>
                                                         <form class='form' method='POST' action=''>
-                                                            <button name='delete' value='" . $row['id'] . "' class='btn btn-sm icon btn-danger'><i class='bi bi-x'></i></button>
+                                                            <div class='btn-group dropstart'>
+                                                                <button class='btn btn-sm btn-danger icon dropdown-toggle' type='button' id='dropdownMenuDelete' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                                                                    <i class='bi bi-x'></i>
+                                                                </button>
+                                                                <div class='dropdown-menu' aria-labelledby='dropdownMenuDelete'>
+                                                                    <button name='delete' value='" . $row['id'] . "' class='dropdown-item'>Ya</button>
+                                                                    <button class='dropdown-item'>Tidak</button>
+                                                                </div>
+                                                            </div>
                                                         </form>
                                                     </td>
                                                 </tr>";
