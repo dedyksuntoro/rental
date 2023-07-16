@@ -68,11 +68,13 @@ if (isset($_POST['delete'])) {
                                             FROM
                                                 tbl_kantor";
                                     $result = mysqli_query($conn, $sql);
+                                    $number = 1;
                                     if (mysqli_num_rows($result) > 0) {
                                         echo '<div class="table-responsive">';
                                         echo '<table class="table table-hover" id="table1">';
                                         echo '<thead>
                                                 <tr>
+                                                    <th>NO</th>
                                                     <th>NAMA KANTOR</th>
                                                     <th>ALAMAT KANTOR</th>
                                                     <th class="text-center" colspan="2">TINDAKAN</th>
@@ -81,6 +83,7 @@ if (isset($_POST['delete'])) {
                                         echo '<tbody>';
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             echo "<tr>
+                                                    <td style='width:1%'>" . $number . "</td>
                                                     <td>" . $row['nama_kantor'] . "</td>
                                                     <td>" . $row['alamat_kantor'] . "</td>
                                                     <td style='width:1%' class='text-center'>
@@ -102,6 +105,7 @@ if (isset($_POST['delete'])) {
                                                         </form>
                                                     </td>
                                                 </tr>";
+                                            $number++;
                                         }
                                         echo '</tbody>';
                                         echo '</table>';
