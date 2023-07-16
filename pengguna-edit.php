@@ -7,10 +7,7 @@ if (!isset($_SESSION['email'])) {
 }
 
 if ($_GET['pengguna'] != 'active') {
-    session_start();
-    session_destroy();
-
-    header("Location: auth-login.php");
+    header("Location: error-404.php");
 }
 
 if (isset($_POST['submit'])) {
