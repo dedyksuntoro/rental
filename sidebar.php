@@ -32,44 +32,70 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
-
                 <li class="sidebar-item <?php echo $_GET['index'] ?>">
                     <a href="index.php?index=active" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
+                <li class="sidebar-item <?php echo $_GET['pelanggan'] ?>">
+                    <a href="pelanggan.php?pelanggan=active" class='sidebar-link'>
+                        <i class="bi bi-people"></i>
+                        <span>Pelanggan</span>
+                    </a>
+                </li>
+                <li class="sidebar-item <?php echo $_GET['mobil'] ?>">
+                    <a href="mobil.php?mobil=active" class='sidebar-link'>
+                        <i class="bi bi-car-front"></i>
+                        <span>Mobil</span>
+                    </a>
+                </li>
+                <li class="sidebar-item <?php echo $_GET['pesanan'] ?>">
+                    <a href="pesanan.php?pesanan=active" class='sidebar-link'>
+                        <i class="bi bi-bag"></i>
+                        <span>Pesanan</span>
+                    </a>
+                </li>
+                <li class="sidebar-item has-sub <?php echo $_GET['pabrikan'].$_GET['order-vendor'] ?>">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-tools"></i>
+                        <span>Pengaturan</span>
+                    </a>
+                    <ul class="submenu <?php echo $_GET['pabrikan'].$_GET['order-vendor'] ?>">
+                        <li class="submenu-item <?php echo $_GET['pabrikan'] ?>">
+                            <a href="pabrikan.php?pabrikan=active">Pabrikan</a>
+                        </li>
+                        <li class="submenu-item <?php echo $_GET['order-vendor'] ?>">
+                            <a href="order-vendor.php?order-vendor=active">Order Vendor</a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="sidebar-title">Sistem</li>
-
                 <li class="sidebar-item  <?php echo $_GET['hak-akses'] ?>">
                     <a href="hak-akses.php?hak-akses=active" class='sidebar-link'>
                         <i class="bi bi-lock-fill"></i>
                         <span>Hak Akses</span>
                     </a>
                 </li>
-
                 <li class="sidebar-item  <?php echo $_GET['pengguna'] ?>">
                     <a href="pengguna.php?pengguna=active" class='sidebar-link'>
-                        <i class="bi bi-people"></i>
+                        <i class="bi bi-person"></i>
                         <span>Pengguna</span>
                     </a>
                 </li>
-
                 <li class="sidebar-item  <?php echo $_GET['kantor'] ?>">
                     <a href="kantor.php?kantor=active" class='sidebar-link'>
                         <i class="bi bi-building"></i>
                         <span>Kantor</span>
                     </a>
                 </li>
-
                 <li class="sidebar-item  ">
                     <a href="auth-logout.php" class='sidebar-link'>
                         <i class="bi bi-power"></i>
                         <span>Keluar</span>
                     </a>
                 </li>
-
             </ul>
         </div>
     </div>
