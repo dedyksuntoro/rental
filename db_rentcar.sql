@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 16/07/2023 23:35:41
+ Date: 20/07/2023 22:18:35
 */
 
 SET NAMES utf8mb4;
@@ -83,13 +83,13 @@ CREATE TABLE `tbl_mobil`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_mobil
 -- ----------------------------
-INSERT INTO `tbl_mobil` VALUES (2, 3, 'Dignissimos Nam saep', '82', '20', '63', 'Impedit id repelle', 'Porro ut at cumque d', 'Repudiandae qui volu', 1, 52, 89, 78, 23, 'Dikantor', '2023-07-16 04:34:30', NULL);
-INSERT INTO `tbl_mobil` VALUES (3, 5, 'Praesentium aliquam ', '3', '77', '40', 'Molestias quis quia ', 'In in molestiae ex v', 'Quis obcaecati tempo', 3, 3, 100, 5, 19, 'Disewakan', '2023-07-16 04:34:50', NULL);
+INSERT INTO `tbl_mobil` VALUES (3, 2, 'Jazz', '2010', '2201010', '10102020', 'N 2020 ND', 'Malik', 'Jl. Saja Dulu', 4, 2230000, 5230000, 120000, 15000, 'Dikantor', '2023-07-16 04:34:50', '2023-07-18 23:18:11');
+INSERT INTO `tbl_mobil` VALUES (4, 4, 'Nisi velit qui tota', '78', '67', '72', 'Tempore voluptatem', 'Autem incididunt sun', 'Ea voluptatem do vol', 3, 93, 74, 81, 92, 'Disewakan', '2023-07-17 05:21:26', NULL);
 
 -- ----------------------------
 -- Table structure for tbl_order_vendor
@@ -120,7 +120,7 @@ CREATE TABLE `tbl_pabrikan`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_pabrikan
