@@ -116,10 +116,10 @@ if (isset($_POST['delete'])) {
                                                     <td>" . $row['pemilik'] . "</td>
                                                     <td>" . $row['alamat'] . "</td>
                                                     <td>" . $row['kantor'] . "</td>
-                                                    <td>" . $row['harga_perbulan'] . "</td>
-                                                    <td>" . $row['harga_perminggu'] . "</td>
-                                                    <td>" . $row['harga_perhari'] . "</td>
-                                                    <td>" . $row['harga_perjam'] . "</td>
+                                                    <td>" . rupiah($row['harga_perbulan']) . "</td>
+                                                    <td>" . rupiah($row['harga_perminggu']) . "</td>
+                                                    <td>" . rupiah($row['harga_perhari']) . "</td>
+                                                    <td>" . rupiah($row['harga_perjam']) . "</td>
                                                     <td>" . $row['status'] . "</td>
                                                     <td style='width:1%' class='text-center'>
                                                         <form class='form' method='POST' action='mobil-edit.php?mobil=active'>
