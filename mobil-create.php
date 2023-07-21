@@ -35,11 +35,10 @@ if (isset($_POST['submit'])) {
         $_SESSION['pesannya'] = '<div class="alert alert-light-success color-success"><i class="bi bi-check-circle"></i> Data berhasil ditambahkan.</div>';
         header('Location: mobil.php?mobil=active');
     } else {
-        // echo '<script>alert("'.$sql.'")</script>';
-        var_dump("Error: " . $sql . "<br>" . mysqli_error($conn));
+        // var_dump("Error: " . $sql . "<br>" . mysqli_error($conn));
         mysqli_close($conn);
         $_SESSION['pesannya'] = '<div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> Data gagal ditambahkan.</div>';
-        // header('Location: mobil.php?mobil=active');
+        header('Location: mobil.php?mobil=active');
     }
 }
 
