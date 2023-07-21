@@ -11,20 +11,20 @@ if ($_GET['mobil'] != 'active') {
 }
 
 if (isset($_POST['submit'])) {
-    $pabrikan = isset($_POST['pabrikan']) ? $_POST['pabrikan'] : NULL;
-    $merek = isset($_POST['merek']) ? $_POST['merek'] : NULL;
-    $tahun = isset($_POST['tahun']) ? $_POST['tahun'] : NULL;
-    $nomor_rangka = isset($_POST['nomor_rangka']) ? $_POST['nomor_rangka'] : NULL;
-    $nomor_mesin = isset($_POST['nomor_mesin']) ? $_POST['nomor_mesin'] : NULL;
-    $nopol = isset($_POST['nopol']) ? $_POST['nopol'] : NULL;
-    $pemilik = isset($_POST['pemilik']) ? $_POST['pemilik'] : NULL;
-    $alamat = isset($_POST['alamat']) ? $_POST['alamat'] : NULL;
-    $kantor = isset($_POST['kantor']) ? $_POST['kantor'] : NULL;
-    $harga_perbulan = isset($_POST['harga_perbulan']) ? $_POST['harga_perbulan'] : NULL;
-    $harga_perminggu = isset($_POST['harga_perminggu']) ? $_POST['harga_perminggu'] : NULL;
-    $harga_perhari = isset($_POST['harga_perhari']) ? $_POST['harga_perhari'] : NULL;
-    $harga_perjam = isset($_POST['harga_perjam']) ? $_POST['harga_perjam'] : NULL;
-    $status = isset($_POST['status']) ? $_POST['status'] : NULL;
+    $pabrikan = !empty($_POST['pabrikan']) ? $_POST['pabrikan'] : 'null';
+    $merek = !empty($_POST['merek']) ? $_POST['merek'] : 'null';
+    $tahun = !empty($_POST['tahun']) ? $_POST['tahun'] : 'null';
+    $nomor_rangka = !empty($_POST['nomor_rangka']) ? $_POST['nomor_rangka'] : 'null';
+    $nomor_mesin = !empty($_POST['nomor_mesin']) ? $_POST['nomor_mesin'] : 'null';
+    $nopol = !empty($_POST['nopol']) ? $_POST['nopol'] : 'null';
+    $pemilik = !empty($_POST['pemilik']) ? $_POST['pemilik'] : 'null';
+    $alamat = !empty($_POST['alamat']) ? $_POST['alamat'] : 'null';
+    $kantor = !empty($_POST['kantor']) ? $_POST['kantor'] : 'null';
+    $harga_perbulan = !empty($_POST['harga_perbulan']) ? $_POST['harga_perbulan'] : 'null';
+    $harga_perminggu = !empty($_POST['harga_perminggu']) ? $_POST['harga_perminggu'] : 'null';
+    $harga_perhari = !empty($_POST['harga_perhari']) ? $_POST['harga_perhari'] : 'null';
+    $harga_perjam = !empty($_POST['harga_perjam']) ? $_POST['harga_perjam'] : 'null';
+    $status = !empty($_POST['status']) ? $_POST['status'] : 'null';
     $created_at = date("Y-m-d h:i:s");
 
     $sql = "INSERT INTO tbl_mobil (pabrikan, merek, tahun, nomor_rangka, nomor_mesin, nopol, pemilik, alamat, kantor, harga_perbulan, harga_perminggu, harga_perhari, harga_perjam, `status`, created_at)
