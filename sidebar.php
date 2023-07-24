@@ -40,12 +40,12 @@
                 </li>
                 <li class="sidebar-item has-sub <?php echo $_GET['pelanggan'].$_GET['pelanggan-lain'] ?>">
                     <a href="#" class='sidebar-link'>
-                        <i class="bi bi-tools"></i>
+                        <i class="bi bi-people"></i>
                         <span>Pelanggan</span>
                     </a>
                     <ul class="submenu <?php echo $_GET['pelanggan'].$_GET['pelanggan-lain'] ?>">
                         <li class="submenu-item <?php echo $_GET['pelanggan'] ?>">
-                            <a href="pelanggan.php?pelanggan=active">Pelanggan Sendiri</a>
+                            <a href="pelanggan.php?pelanggan=active">Pelanggan Tamu</a>
                         </li>
                         <li class="submenu-item <?php echo $_GET['pelanggan-lain'] ?>">
                             <a href="pelanggan-lain.php?pelanggan-lain=active">Pelanggan Lain</a>
