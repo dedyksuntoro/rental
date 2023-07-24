@@ -11,7 +11,7 @@
  Target Server Version : 50739 (5.7.39)
  File Encoding         : 65001
 
- Date: 22/07/2023 01:55:36
+ Date: 25/07/2023 01:42:52
 */
 
 SET NAMES utf8mb4;
@@ -141,6 +141,43 @@ INSERT INTO `tbl_pabrikan` (`id`, `pabrikan`, `created_at`, `updated_at`) VALUES
 INSERT INTO `tbl_pabrikan` (`id`, `pabrikan`, `created_at`, `updated_at`) VALUES (4, 'Mitsubishi', '2023-07-15 11:41:33', NULL);
 INSERT INTO `tbl_pabrikan` (`id`, `pabrikan`, `created_at`, `updated_at`) VALUES (5, 'Hyundai', '2023-07-15 11:41:40', NULL);
 INSERT INTO `tbl_pabrikan` (`id`, `pabrikan`, `created_at`, `updated_at`) VALUES (6, 'Suzuki', '2023-07-15 11:41:58', '2023-07-15 18:55:59');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for tbl_pelanggan
+-- ----------------------------
+DROP TABLE IF EXISTS `tbl_pelanggan`;
+CREATE TABLE `tbl_pelanggan` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_pelanggan` varchar(100) DEFAULT NULL,
+  `tgl_lahir_pelanggan` date DEFAULT NULL,
+  `tempat_lahir_pelanggan` varchar(100) DEFAULT NULL,
+  `jenis_kelamin_pelanggan` enum('Laki-laki','Perempuan') DEFAULT NULL,
+  `no_telp_pelanggan` varchar(100) DEFAULT NULL,
+  `alamat_pelanggan` text,
+  `gambar1` varchar(255) DEFAULT NULL,
+  `keterangan_gambar1` varchar(255) DEFAULT NULL,
+  `gambar2` varchar(255) DEFAULT NULL,
+  `keterangan_gambar2` varchar(255) DEFAULT NULL,
+  `gambar3` varchar(255) DEFAULT NULL,
+  `keterangan_gambar3` varchar(255) DEFAULT NULL,
+  `gambar4` varchar(255) DEFAULT NULL,
+  `keterangan_gambar4` varchar(255) DEFAULT NULL,
+  `gambar5` varchar(255) DEFAULT NULL,
+  `keterangan_gambar5` varchar(255) DEFAULT NULL,
+  `gambar6` varchar(255) DEFAULT NULL,
+  `keterangan_gambar6` varchar(255) DEFAULT NULL,
+  `status_pelanggan` enum('Aktif','Blokir') DEFAULT NULL,
+  `kantor` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tbl_pelanggan
+-- ----------------------------
+BEGIN;
 COMMIT;
 
 -- ----------------------------
