@@ -145,7 +145,7 @@ if (isset($_POST['submit'])) {
     $created_at = date("Y-m-d h:i:s");
 
     $sql = "INSERT INTO tbl_pelanggan (nama_pelanggan, tgl_lahir_pelanggan, tempat_lahir_pelanggan, jenis_kelamin_pelanggan, no_telp_pelanggan, alamat_pelanggan, gambar1, keterangan_gambar1, gambar2, keterangan_gambar2, gambar3, keterangan_gambar3, gambar4, keterangan_gambar4, gambar5, keterangan_gambar5, gambar6, keterangan_gambar6, kantor, status_pelanggan, created_at)
-            VALUES ('$nama_pelanggan', '$tgl_lahir_pelanggan', '$tempat_lahir_pelanggan', '$jenis_kelamin_pelanggan', '$no_telp_pelanggan', '$alamat_pelanggan', '$gambar1', '$keterangan_gambar1', '$gambar2', '$keterangan_gambar2', '$gambar3', '$keterangan_gambar3', '$gambar4', '$keterangan_gambar4', '$gambar5', '$keterangan_gambar5', '$gambar6', '$keterangan_gambar6', '$kantor', '$status_pelanggan', '$created_at')";
+            VALUES ('$nama_pelanggan', '$tgl_lahir_pelanggan', '$tempat_lahir_pelanggan', '$jenis_kelamin_pelanggan', '$no_telp_pelanggan', '$alamat_pelanggan', '$gambar1', '$keterangan_gambar1', '$gambar2', '$keterangan_gambar2', '$gambar3', '$keterangan_gambar3', '$gambar4', '$keterangan_gambar4', '$gambar5', '$keterangan_gambar5', '$gambar6', '$keterangan_gambar6', $kantor, '$status_pelanggan', '$created_at')";
 
     if (mysqli_query($conn, $sql)) {
         mysqli_close($conn);
