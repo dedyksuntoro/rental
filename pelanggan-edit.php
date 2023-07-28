@@ -228,7 +228,7 @@ if (isset($_POST['edit'])) {
             </header>
 
             <div class="page-heading">
-                <h3>Edit mobil</h3>
+                <h3>Edit Pelanggan</h3>
             </div>
             <section class="section">
                 <div class="row" id="table-hover-row">
@@ -236,7 +236,7 @@ if (isset($_POST['edit'])) {
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
-                                    <<form class="form" method="POST" action="" enctype="multipart/form-data" data-parsley-validate>
+                                    <form class="form" method="POST" action="" enctype="multipart/form-data" data-parsley-validate>
                                         <div class="row">
                                             <div class="col-md-12 col-12">
                                                 <div class="form-group">
