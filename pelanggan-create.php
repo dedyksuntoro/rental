@@ -28,12 +28,12 @@ if (isset($_POST['submit'])) {
         if (!in_array($gambar1_ext, $syarat_ekstensi)) {
             $_SESSION['pesannya'] = '<div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> Ekstensi file tidak sesuai.</div>';
             header('Location: pelanggan.php?pelanggan=active');
+            exit();
         } else {
             if ($gambar1_size > 1044070) {
                 $_SESSION['pesannya'] = '<div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> Ukuran file tidak boleh lebih dari 1MB.</div>';
                 header('Location: pelanggan.php?pelanggan=active');
-            } else {
-                move_uploaded_file($_FILES['gambar1']['tmp_name'], $gambar1);
+                exit();
             }
         }
     } else {
@@ -48,12 +48,12 @@ if (isset($_POST['submit'])) {
         if (!in_array($gambar2_ext, $syarat_ekstensi)) {
             $_SESSION['pesannya'] = '<div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> Ekstensi file tidak sesuai.</div>';
             header('Location: pelanggan.php?pelanggan=active');
+            exit();
         } else {
             if ($gambar2_size > 1044070) {
                 $_SESSION['pesannya'] = '<div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> Ukuran file tidak boleh lebih dari 1MB.</div>';
                 header('Location: pelanggan.php?pelanggan=active');
-            } else {
-                move_uploaded_file($_FILES['gambar2']['tmp_name'], $gambar2);
+                exit();
             }
         }
     } else {
@@ -68,12 +68,12 @@ if (isset($_POST['submit'])) {
         if (!in_array($gambar3_ext, $syarat_ekstensi)) {
             $_SESSION['pesannya'] = '<div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> Ekstensi file tidak sesuai.</div>';
             header('Location: pelanggan.php?pelanggan=active');
+            exit();
         } else {
             if ($gambar3_size > 1044070) {
                 $_SESSION['pesannya'] = '<div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> Ukuran file tidak boleh lebih dari 1MB.</div>';
                 header('Location: pelanggan.php?pelanggan=active');
-            } else {
-                move_uploaded_file($_FILES['gambar3']['tmp_name'], $gambar3);
+                exit();
             }
         }
     } else {
@@ -88,12 +88,12 @@ if (isset($_POST['submit'])) {
         if (!in_array($gambar4_ext, $syarat_ekstensi)) {
             $_SESSION['pesannya'] = '<div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> Ekstensi file tidak sesuai.</div>';
             header('Location: pelanggan.php?pelanggan=active');
+            exit();
         } else {
             if ($gambar4_size > 1044070) {
                 $_SESSION['pesannya'] = '<div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> Ukuran file tidak boleh lebih dari 1MB.</div>';
                 header('Location: pelanggan.php?pelanggan=active');
-            } else {
-                move_uploaded_file($_FILES['gambar4']['tmp_name'], $gambar4);
+                exit();
             }
         }
     } else {
@@ -108,12 +108,12 @@ if (isset($_POST['submit'])) {
         if (!in_array($gambar5_ext, $syarat_ekstensi)) {
             $_SESSION['pesannya'] = '<div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> Ekstensi file tidak sesuai.</div>';
             header('Location: pelanggan.php?pelanggan=active');
+            exit();
         } else {
             if ($gambar5_size > 1044070) {
                 $_SESSION['pesannya'] = '<div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> Ukuran file tidak boleh lebih dari 1MB.</div>';
                 header('Location: pelanggan.php?pelanggan=active');
-            } else {
-                move_uploaded_file($_FILES['gambar5']['tmp_name'], $gambar5);
+                exit();
             }
         }
     } else {
@@ -128,12 +128,12 @@ if (isset($_POST['submit'])) {
         if (!in_array($gambar5_ext, $syarat_ekstensi)) {
             $_SESSION['pesannya'] = '<div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> Ekstensi file tidak sesuai.</div>';
             header('Location: pelanggan.php?pelanggan=active');
+            exit();
         } else {
             if ($gambar5_size > 1044070) {
                 $_SESSION['pesannya'] = '<div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> Ukuran file tidak boleh lebih dari 1MB.</div>';
                 header('Location: pelanggan.php?pelanggan=active');
-            } else {
-                move_uploaded_file($_FILES['gambar6']['tmp_name'], $gambar6);
+                exit();
             }
         }
     } else {
@@ -149,6 +149,24 @@ if (isset($_POST['submit'])) {
 
     if (mysqli_query($conn, $sql)) {
         mysqli_close($conn);
+        if ($gambar1 != 'null') {
+            move_uploaded_file($_FILES['gambar1']['tmp_name'], $gambar1);
+        }
+        if ($gambar2 != 'null') {
+            move_uploaded_file($_FILES['gambar2']['tmp_name'], $gambar2);
+        }
+        if ($gambar3 != 'null') {
+            move_uploaded_file($_FILES['gambar3']['tmp_name'], $gambar3);
+        }
+        if ($gambar4 != 'null') {
+            move_uploaded_file($_FILES['gambar4']['tmp_name'], $gambar4);
+        }
+        if ($gambar5 != 'null') {
+            move_uploaded_file($_FILES['gambar5']['tmp_name'], $gambar5);
+        }
+        if ($gambar6 != 'null') {
+            move_uploaded_file($_FILES['gambar6']['tmp_name'], $gambar6);
+        }
         $_SESSION['pesannya'] = '<div class="alert alert-light-success color-success"><i class="bi bi-check-circle"></i> Data berhasil ditambahkan.</div>';
         header('Location: pelanggan.php?pelanggan=active');
     } else {
