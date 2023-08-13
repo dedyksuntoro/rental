@@ -58,10 +58,10 @@
                         <span>Mobil</span>
                     </a>
                 </li>
-                <li class="sidebar-item <?php echo $_GET['pesanan'] ?>">
-                    <a href="pesanan.php?pesanan=active" class='sidebar-link'>
+                <li class="sidebar-item <?php echo $_GET['persewaan'] ?>">
+                    <a href="persewaan.php?persewaan=active" class='sidebar-link'>
                         <i class="bi bi-bag"></i>
-                        <span>Pesanan</span>
+                        <span>Persewaan</span>
                     </a>
                 </li>
                 <li class="sidebar-item has-sub <?php echo $_GET['pabrikan'].$_GET['order-vendor'] ?>">
