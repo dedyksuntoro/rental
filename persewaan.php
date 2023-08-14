@@ -59,6 +59,7 @@ if (isset($_POST['delete'])) {
                                 <div class="card-body">
                                     <?php
                                     $sql = "SELECT
+                                                tbl_persewaan.id,
                                                 tbl_persewaan.nomor_order,
                                                 tbl_kantor.nama_kantor AS kantor,
                                                 tbl_mobil.merek AS mobil,
@@ -77,7 +78,8 @@ if (isset($_POST['delete'])) {
                                                 LEFT JOIN tbl_kantor ON tbl_kantor.id = tbl_persewaan.kantor
                                                 LEFT JOIN tbl_mobil ON tbl_mobil.id = tbl_persewaan.mobil
                                                 LEFT JOIN tbl_order_vendor ON tbl_order_vendor.id = tbl_persewaan.pesan_dari
-                                                LEFT JOIN tbl_pelanggan ON tbl_pelanggan.id = tbl_persewaan.pelanggan";
+                                                LEFT JOIN tbl_pelanggan ON tbl_pelanggan.id = tbl_persewaan.pelanggan
+                                            WHERE tbl_persewaan.status_sewa = 'Order'";
                                     $result = mysqli_query($conn, $sql);
                                     $number = 1;
                                     if (mysqli_num_rows($result) > 0) {
@@ -91,7 +93,6 @@ if (isset($_POST['delete'])) {
                                                     <th>MOBIL</th>
                                                     <th>PELANGGAN</th>
                                                     <th>TANGGAL</th>
-                                                    <th>TIPE</th>
                                                     <th>TIPE</th>
                                                     <th>PESAN DARI</th>
                                                     <th>DIKIRIM</th>
@@ -118,8 +119,8 @@ if (isset($_POST['delete'])) {
                                                     <td>" . $row['alamat_pengiriman'] . "</td>
                                                     <td>" . $row['mulai_sewa'] . "</td>
                                                     <td>" . $row['selesai_sewa'] . "</td>
-                                                    <td>" . $row['potongan_harga'] . "</td>
-                                                    <td>" . $row['total_harga'] . "</td>
+                                                    <td>" . rupiah($row['potongan_harga']) . "</td>
+                                                    <td>" . rupiah($row['total_harga']) . "</td>
                                                     <td style='width:1%' class='text-center'>
                                                         <form class='form' method='POST' action='persewaan-edit.php?persewaan=active'>
                                                             <button name='edit' value='" . $row['id'] . "' class='btn btn-sm icon btn-success'><i class='bi bi-pencil'></i></button>

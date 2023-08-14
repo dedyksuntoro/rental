@@ -33,12 +33,12 @@ if (isset($_POST['submit'])) {
     if (mysqli_query($conn, $sql)) {
         mysqli_close($conn);
         $_SESSION['pesannya'] = '<div class="alert alert-light-success color-success"><i class="bi bi-check-circle"></i> Data berhasil ditambahkan.</div>';
-        header('Location: pengguna.php?pengguna=active');
+        header('Location: persewaan.php?persewaan=active');
     } else {
         // var_dump("Error: " . $sql . "<br>" . mysqli_error($conn));
         mysqli_close($conn);
         $_SESSION['pesannya'] = '<div class="alert alert-light-danger color-danger"><i class="bi bi-exclamation-circle"></i> Data gagal ditambahkan.</div>';
-        header('Location: pengguna.php?pengguna=active');
+        header('Location: persewaan.php?persewaan=active');
     }
 }
 
@@ -122,44 +122,91 @@ $result_order_vendor = mysqli_query($conn, $sql_order_vendor);
                                             </div>
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="nama-pengguna-column">Nama Pengguna</label>
-                                                    <input type="text" id="nama-pengguna-column" class="form-control" placeholder="Masukkan nama pengguna" name="nama" data-parsley-required="true">
+                                                    <label for="tanggal-sewa-column">Tanggal Sewa</label>
+                                                    <input type="date" id="tanggal-sewa-column" class="form-control" placeholder="Masukkan tanggal persewaan" name="tanggal_sewa" data-parsley-required="true">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="alamat-pengguna-column">Alamat Pengguna</label>
-                                                    <input type="text" id="alamat-pengguna-column" class="form-control" placeholder="Masukkan alamat pengguna" name="alamat" data-parsley-required="true">
+                                                    <label for="tipe-sewa-column">Tipe Sewa</label>
+                                                    <select class="form-select" id="tipe-sewa-column" name="tipe_sewa" data-parsley-required="true">
+                                                        <option value="" selected disabled>-- Pilih --</option>
+                                                        <option value="Perjam">Perjam</option>
+                                                        <option value="Perhari">Perhari</option>
+                                                        <option value="Perminggu">Perminggu</option>
+                                                        <option value="Perbulan">Perbulan</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="email-pengguna-column">Email Pengguna</label>
-                                                    <input type="email" id="email-pengguna-column" class="form-control" placeholder="Masukkan email pengguna" name="email" data-parsley-required="true">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="password-pengguna-column">Password Pengguna</label>
-                                                    <input type="password" id="password-pengguna-column" class="form-control" placeholder="Masukkan password pengguna" name="password" data-parsley-required="true">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="akses-column">Akses</label>
-                                                    <select class="form-select" id="akses-column" name="akses" data-parsley-required="true">
+                                                    <label for="pesan-dari-column">Pesan Dari</label>
+                                                    <select class="form-select" id="pesan-dari-column" name="pesan_dari" data-parsley-required="true">
                                                         <option value="" selected disabled>-- Pilih --</option>
                                                         <?php
-                                                            while ($row_akses = mysqli_fetch_array($result_akses)) {
-                                                                echo "<option value='".$row_akses['id']."'>".$row_akses['nama_hak_akses']."</option>";
+                                                            while ($row_order_vendor = mysqli_fetch_array($result_order_vendor)) {
+                                                                echo "<option value='".$row_order_vendor['id']."'>".$row_order_vendor['nama_vendor']."</option>";
                                                             } 
                                                         ?>
                                                     </select>
                                                 </div>
                                             </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="dikirim-column">Dikirim</label>
+                                                    <select class="form-select" id="dikirim-column" name="dikirim" data-parsley-required="true">
+                                                        <option value="" selected disabled>-- Pilih --</option>
+                                                        <option value="Iya">Iya</option>
+                                                        <option value="Tidak">Tidak</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="alamat-pengiriman-column">Alamat Pengiriman</label>
+                                                    <input type="text" id="alamat-pengiriman-column" class="form-control" placeholder="Masukkan alamat pengiriman" name="alamat_pengiriman" data-parsley-required="false">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="mulai-sewa-column">Mulai Sewa</label>
+                                                    <input type="date" id="mulai-sewa-column" class="form-control" placeholder="Masukkan tanggal mulai sewa" name="mulai_sewa" data-parsley-required="true">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="selesai-sewa-column">Selesai Sewa</label>
+                                                    <input type="date" id="selesai-sewa-column" class="form-control" placeholder="Masukkan tanggal selesai sewa" name="selesai_sewa" data-parsley-required="true">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="potongan-harga-column">Potongan Harga</label>
+                                                    <input type="number" id="potongan-harga-column" class="form-control" placeholder="Masukkan potongan harga jika ada" name="potongan_harga" data-parsley-required="false">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="total-harga-column">Total Harga</label>
+                                                    <input type="number" id="total-harga-column" class="form-control" placeholder="Masukkan total harga" name="total_harga" data-parsley-required="false">
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="status-sewa-column">Status Sewa</label>
+                                                    <select class="form-select" id="status-sewa-column" name="status_sewa" data-parsley-required="true">
+                                                        <option value="" selected disabled>-- Pilih --</option>
+                                                        <option value="Order">Order</option>
+                                                        <option value="Cancel">Cancel</option>
+                                                        <option value="Garage">Garage</option>
+                                                        <option value="Extend">Extend</option>
+                                                        <option value="Moving">Moving</option>
+                                                    </select>
+                                                </div>
+                                            </div> -->
                                             <div class="col-12 d-flex justify-content-end">
                                                 <button name="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
-                                                <a href="pengguna.php?pengguna=active" class="btn btn-light-secondary me-1 mb-1">Batal</a>
+                                                <a href="persewaan.php?persewaan=active" class="btn btn-light-secondary me-1 mb-1">Batal</a>
                                             </div>
                                         </div>
                                     </form>
