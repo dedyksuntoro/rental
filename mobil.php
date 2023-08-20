@@ -70,7 +70,6 @@ if (isset($_POST['delete'])) {
                                                 tbl_mobil.alamat,
                                                 tbl_kantor.nama_kantor AS kantor,
                                                 tbl_mobil.harga_perbulan,
-                                                tbl_mobil.harga_perminggu,
                                                 tbl_mobil.harga_perhari,
                                                 tbl_mobil.harga_perjam,
                                                 tbl_mobil.status
@@ -96,11 +95,11 @@ if (isset($_POST['delete'])) {
                                                     <th>ALAMAT</th>
                                                     <th>KANTOR</th>
                                                     <th>PERBULAN</th>
-                                                    <th>PERMINGGU</th>
                                                     <th>PERHARI</th>
                                                     <th>PERJAM</th>
                                                     <th>STATUS</th>
-                                                    <th class="text-center" colspan="2">TINDAKAN</th>
+                                                    <th class="text-center">EDIT</th>
+                                                    <th class="text-center">HAPUS</th>
                                                 </tr>
                                             </thead>';
                                         echo '<tbody>';
@@ -117,7 +116,6 @@ if (isset($_POST['delete'])) {
                                                     <td>" . $row['alamat'] . "</td>
                                                     <td>" . $row['kantor'] . "</td>
                                                     <td>" . rupiah($row['harga_perbulan']) . "</td>
-                                                    <td>" . rupiah($row['harga_perminggu']) . "</td>
                                                     <td>" . rupiah($row['harga_perhari']) . "</td>
                                                     <td>" . rupiah($row['harga_perjam']) . "</td>
                                                     <td>" . $row['status'] . "</td>
@@ -171,8 +169,16 @@ if (isset($_POST['delete'])) {
     <script src="assets/extensions/apexcharts/apexcharts.min.js"></script>
     <script src="assets/js/pages/dashboard.js"></script>
 
-    <script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
-    <script src="assets/js/pages/simple-datatables.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
+    <script>
+        new DataTable('#table1', {
+            responsive: true
+        });
+    </script>
 
 </body>
 

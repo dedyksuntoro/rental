@@ -12,23 +12,76 @@ if ($_GET['persewaan'] != 'active') {
 
 if (isset($_POST['submit'])) {
     $nomor_order = time();
-    $kantor = $_POST['kantor'];
-    $mobil = $_POST['mobil'];
-    $pelanggan = $_POST['pelanggan'];
-    $tanggal_sewa = $_POST['tanggal_sewa'];
-    $tipe_sewa = $_POST['tipe_sewa'];
-    $pesan_dari = $_POST['pesan_dari'];
-    $dikirim = $_POST['dikirim'];
-    $alamat_pengiriman = $_POST['alamat_pengiriman'];
-    $mulai_sewa = $_POST['mulai_sewa'];
-    $selesai_sewa = $_POST['selesai_sewa'];
-    $potongan_harga = $_POST['potongan_harga'];
-    $total_harga = $_POST['total_harga'];
+    $kantor = !empty($_POST['kantor']) ? $_POST['kantor'] : 'null';
+    $mobil = !empty($_POST['mobil']) ? $_POST['mobil'] : 'null';
+    $pelanggan = !empty($_POST['pelanggan']) ? $_POST['pelanggan'] : 'null';
+    $tanggal_sewa = !empty($_POST['tanggal_sewa']) ? $_POST['tanggal_sewa'] : 'null';
+    $tipe_sewa = !empty($_POST['tipe_sewa']) ? $_POST['tipe_sewa'] : 'null';
+    $pesan_dari = !empty($_POST['pesan_dari']) ? $_POST['pesan_dari'] : 'null';
+    $dikirim = !empty($_POST['dikirim']) ? $_POST['dikirim'] : 'null';
+    $alamat_pengiriman = !empty($_POST['alamat_pengiriman']) ? $_POST['alamat_pengiriman'] : null;
+    $mulai_sewa = !empty($_POST['mulai_sewa']) ? $_POST['mulai_sewa'] : 'null';
+    $selesai_sewa = !empty($_POST['selesai_sewa']) ? $_POST['selesai_sewa'] : 'null';
+    $potongan_harga = !empty($_POST['potongan_harga']) ? $_POST['potongan_harga'] : 'null';
+    // $total_harga = !empty($_POST['total_harga']) ? $_POST['total_harga'] : 'null';
     $status_sewa = 'Order';
     $created_at = date("Y-m-d h:i:s");
 
-    $sql = "INSERT INTO tbl_persewaan (nomor_order, kantor, mobil, pelanggan, tanggal_sewa, tipe_sewa, pesan_dari, dikirim, alamat_pengiriman, mulai_sewa, selesai_sewa, potongan_harga, total_harga, status_sewa, created_at)
-            VALUES ('$nomor_order', $kantor, $mobil, $pelanggan, '$tanggal_sewa', '$tipe_sewa', $pesan_dari, '$dikirim', '$alamat_pengiriman', '$mulai_sewa', '$selesai_sewa', $potongan_harga, $total_harga, '$status_sewa', '$created_at')";
+    if ($tipe_sewa == 'Perjam') {
+        //SEWA PERJAM
+        $datetime1 = new DateTime($mulai_sewa);
+        $datetime2 = new DateTime($selesai_sewa);
+        $interval = $datetime1->diff($datetime2);
+        $interval_result = $interval->format('%h');
+        if ($potongan_harga != 'null') {
+            //JIKA ADA DISKON
+            $sql = "INSERT INTO tbl_persewaan (nomor_order, kantor, mobil, pelanggan, tanggal_sewa, tipe_sewa, pesan_dari, dikirim, alamat_pengiriman, mulai_sewa, selesai_sewa, potongan_harga, total_harga, status_sewa, created_at)
+                SELECT '$nomor_order', $kantor, $mobil, $pelanggan, '$tanggal_sewa', '$tipe_sewa', $pesan_dari, '$dikirim', '$alamat_pengiriman', '$mulai_sewa', '$selesai_sewa', $potongan_harga, ((tbl_mobil.harga_perjam * $interval_result) - ($potongan_harga / 100) * (tbl_mobil.harga_perjam * $interval_result)), '$status_sewa', '$created_at'
+                FROM tbl_mobil WHERE tbl_mobil.id = $mobil";
+        } else {
+            //JIKA TIDAK DISKON
+            $sql = "INSERT INTO tbl_persewaan (nomor_order, kantor, mobil, pelanggan, tanggal_sewa, tipe_sewa, pesan_dari, dikirim, alamat_pengiriman, mulai_sewa, selesai_sewa, potongan_harga, total_harga, status_sewa, created_at)
+                SELECT '$nomor_order', $kantor, $mobil, $pelanggan, '$tanggal_sewa', '$tipe_sewa', $pesan_dari, '$dikirim', '$alamat_pengiriman', '$mulai_sewa', '$selesai_sewa', $potongan_harga, (tbl_mobil.harga_perjam * $interval_result), '$status_sewa', '$created_at'
+                FROM tbl_mobil WHERE tbl_mobil.id = $mobil";
+        }
+    } else if ($tipe_sewa == 'Perhari') {
+        //SEWA PERHARI
+        $datetime1 = new DateTime($mulai_sewa);
+        $datetime2 = new DateTime($selesai_sewa);
+        $interval = $datetime1->diff($datetime2);
+        $interval_result = $interval->format('%d');
+        if ($potongan_harga != 'null') {
+            //JIKA ADA DISKON
+            $sql = "INSERT INTO tbl_persewaan (nomor_order, kantor, mobil, pelanggan, tanggal_sewa, tipe_sewa, pesan_dari, dikirim, alamat_pengiriman, mulai_sewa, selesai_sewa, potongan_harga, total_harga, status_sewa, created_at)
+                SELECT '$nomor_order', $kantor, $mobil, $pelanggan, '$tanggal_sewa', '$tipe_sewa', $pesan_dari, '$dikirim', '$alamat_pengiriman', '$mulai_sewa', '$selesai_sewa', $potongan_harga, ((tbl_mobil.harga_perhari * $interval_result) - ($potongan_harga / 100) * (tbl_mobil.harga_perhari * $interval_result)), '$status_sewa', '$created_at'
+                FROM tbl_mobil WHERE tbl_mobil.id = $mobil";
+        } else {
+            //JIKA TIDAK DISKON
+            $sql = "INSERT INTO tbl_persewaan (nomor_order, kantor, mobil, pelanggan, tanggal_sewa, tipe_sewa, pesan_dari, dikirim, alamat_pengiriman, mulai_sewa, selesai_sewa, potongan_harga, total_harga, status_sewa, created_at)
+                SELECT '$nomor_order', $kantor, $mobil, $pelanggan, '$tanggal_sewa', '$tipe_sewa', $pesan_dari, '$dikirim', '$alamat_pengiriman', '$mulai_sewa', '$selesai_sewa', $potongan_harga, (tbl_mobil.harga_perhari * $interval_result), '$status_sewa', '$created_at'
+                FROM tbl_mobil WHERE tbl_mobil.id = $mobil";
+        }
+    } else if ($tipe_sewa == 'Perbulan') {
+        //SEWA PERBULAN
+        $datetime1 = new DateTime($mulai_sewa);
+        $datetime2 = new DateTime($selesai_sewa);
+        $interval = $datetime1->diff($datetime2);
+        $interval_result = $interval->format('%m');
+        if ($potongan_harga != 'null') {
+            //JIKA ADA DISKON
+            $sql = "INSERT INTO tbl_persewaan (nomor_order, kantor, mobil, pelanggan, tanggal_sewa, tipe_sewa, pesan_dari, dikirim, alamat_pengiriman, mulai_sewa, selesai_sewa, potongan_harga, total_harga, status_sewa, created_at)
+                SELECT '$nomor_order', $kantor, $mobil, $pelanggan, '$tanggal_sewa', '$tipe_sewa', $pesan_dari, '$dikirim', '$alamat_pengiriman', '$mulai_sewa', '$selesai_sewa', $potongan_harga, ((tbl_mobil.harga_perbulan * $interval_result) - ($potongan_harga / 100) * (tbl_mobil.harga_perbulan * $interval_result)), '$status_sewa', '$created_at'
+                FROM tbl_mobil WHERE tbl_mobil.id = $mobil";
+        } else {
+            //JIKA TIDAK DISKON
+            $sql = "INSERT INTO tbl_persewaan (nomor_order, kantor, mobil, pelanggan, tanggal_sewa, tipe_sewa, pesan_dari, dikirim, alamat_pengiriman, mulai_sewa, selesai_sewa, potongan_harga, total_harga, status_sewa, created_at)
+                SELECT '$nomor_order', $kantor, $mobil, $pelanggan, '$tanggal_sewa', '$tipe_sewa', $pesan_dari, '$dikirim', '$alamat_pengiriman', '$mulai_sewa', '$selesai_sewa', $potongan_harga, (tbl_mobil.harga_perbulan * $interval_result), '$status_sewa', '$created_at'
+                FROM tbl_mobil WHERE tbl_mobil.id = $mobil";
+        }
+    }
+
+    // $sql = "INSERT INTO tbl_persewaan (nomor_order, kantor, mobil, pelanggan, tanggal_sewa, tipe_sewa, pesan_dari, dikirim, alamat_pengiriman, mulai_sewa, selesai_sewa, potongan_harga, total_harga, status_sewa, created_at)
+    //         VALUES ('$nomor_order', $kantor, $mobil, $pelanggan, '$tanggal_sewa', '$tipe_sewa', $pesan_dari, '$dikirim', '$alamat_pengiriman', '$mulai_sewa', '$selesai_sewa', $potongan_harga, $total_harga, '$status_sewa', '$created_at')";
 
     if (mysqli_query($conn, $sql)) {
         mysqli_close($conn);
@@ -87,9 +140,9 @@ $result_order_vendor = mysqli_query($conn, $sql_order_vendor);
                                                     <select class="form-select" id="kantor-column" name="kantor" data-parsley-required="true">
                                                         <option value="" selected disabled>-- Pilih --</option>
                                                         <?php
-                                                            while ($row_kantor = mysqli_fetch_array($result_kantor)) {
-                                                                echo "<option value='".$row_kantor['id']."'>".$row_kantor['nama_kantor']."</option>";
-                                                            } 
+                                                        while ($row_kantor = mysqli_fetch_array($result_kantor)) {
+                                                            echo "<option value='" . $row_kantor['id'] . "'>" . $row_kantor['nama_kantor'] . "</option>";
+                                                        }
                                                         ?>
                                                     </select>
                                                 </div>
@@ -100,9 +153,9 @@ $result_order_vendor = mysqli_query($conn, $sql_order_vendor);
                                                     <select class="form-select" id="mobil-column" name="mobil" data-parsley-required="true">
                                                         <option value="" selected disabled>-- Pilih --</option>
                                                         <?php
-                                                            while ($row_mobil = mysqli_fetch_array($result_mobil)) {
-                                                                echo "<option value='".$row_mobil['id']."'>".$row_mobil['merek']."</option>";
-                                                            } 
+                                                        while ($row_mobil = mysqli_fetch_array($result_mobil)) {
+                                                            echo "<option value='" . $row_mobil['id'] . "'>" . $row_mobil['merek'] . "</option>";
+                                                        }
                                                         ?>
                                                     </select>
                                                 </div>
@@ -113,9 +166,9 @@ $result_order_vendor = mysqli_query($conn, $sql_order_vendor);
                                                     <select class="form-select" id="pelanggan-column" name="pelanggan" data-parsley-required="true">
                                                         <option value="" selected disabled>-- Pilih --</option>
                                                         <?php
-                                                            while ($row_pelanggan = mysqli_fetch_array($result_pelanggan)) {
-                                                                echo "<option value='".$row_pelanggan['id']."'>".$row_pelanggan['nama_pelanggan']."</option>";
-                                                            } 
+                                                        while ($row_pelanggan = mysqli_fetch_array($result_pelanggan)) {
+                                                            echo "<option value='" . $row_pelanggan['id'] . "'>" . $row_pelanggan['nama_pelanggan'] . "</option>";
+                                                        }
                                                         ?>
                                                     </select>
                                                 </div>
@@ -133,7 +186,6 @@ $result_order_vendor = mysqli_query($conn, $sql_order_vendor);
                                                         <option value="" selected disabled>-- Pilih --</option>
                                                         <option value="Perjam">Perjam</option>
                                                         <option value="Perhari">Perhari</option>
-                                                        <option value="Perminggu">Perminggu</option>
                                                         <option value="Perbulan">Perbulan</option>
                                                     </select>
                                                 </div>
@@ -144,9 +196,9 @@ $result_order_vendor = mysqli_query($conn, $sql_order_vendor);
                                                     <select class="form-select" id="pesan-dari-column" name="pesan_dari" data-parsley-required="true">
                                                         <option value="" selected disabled>-- Pilih --</option>
                                                         <?php
-                                                            while ($row_order_vendor = mysqli_fetch_array($result_order_vendor)) {
-                                                                echo "<option value='".$row_order_vendor['id']."'>".$row_order_vendor['nama_vendor']."</option>";
-                                                            } 
+                                                        while ($row_order_vendor = mysqli_fetch_array($result_order_vendor)) {
+                                                            echo "<option value='" . $row_order_vendor['id'] . "'>" . $row_order_vendor['nama_vendor'] . "</option>";
+                                                        }
                                                         ?>
                                                     </select>
                                                 </div>
@@ -170,13 +222,13 @@ $result_order_vendor = mysqli_query($conn, $sql_order_vendor);
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="mulai-sewa-column">Mulai Sewa</label>
-                                                    <input type="date" id="mulai-sewa-column" class="form-control" placeholder="Masukkan tanggal mulai sewa" name="mulai_sewa" data-parsley-required="true">
+                                                    <input type="datetime-local" id="mulai-sewa-column" class="form-control" placeholder="Masukkan tanggal mulai sewa" name="mulai_sewa" data-parsley-required="true">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="selesai-sewa-column">Selesai Sewa</label>
-                                                    <input type="date" id="selesai-sewa-column" class="form-control" placeholder="Masukkan tanggal selesai sewa" name="selesai_sewa" data-parsley-required="true">
+                                                    <input type="datetime-local" id="selesai-sewa-column" class="form-control" placeholder="Masukkan tanggal selesai sewa" name="selesai_sewa" data-parsley-required="true">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
@@ -185,12 +237,12 @@ $result_order_vendor = mysqli_query($conn, $sql_order_vendor);
                                                     <input type="number" id="potongan-harga-column" class="form-control" placeholder="Masukkan potongan harga jika ada" name="potongan_harga" data-parsley-required="false">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-12">
+                                            <!-- <div class="col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="total-harga-column">Total Harga</label>
                                                     <input type="number" id="total-harga-column" class="form-control" placeholder="Masukkan total harga" name="total_harga" data-parsley-required="false">
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <!-- <div class="col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="status-sewa-column">Status Sewa</label>

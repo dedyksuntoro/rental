@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Local
+ Source Server         : localhost
  Source Server Type    : MySQL
  Source Server Version : 80030 (8.0.30)
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 13/08/2023 10:37:09
+ Date: 21/08/2023 01:02:30
 */
 
 SET NAMES utf8mb4;
@@ -76,22 +76,17 @@ CREATE TABLE `tbl_mobil`  (
   `alamat` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
   `kantor` int NULL DEFAULT NULL,
   `harga_perbulan` int NULL DEFAULT NULL,
-  `harga_perminggu` int NULL DEFAULT NULL,
   `harga_perhari` int NULL DEFAULT NULL,
   `harga_perjam` int NULL DEFAULT NULL,
   `status` enum('Disewakan','Dikantor') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tbl_mobil
 -- ----------------------------
-INSERT INTO `tbl_mobil` VALUES (3, 2, 'Jazz', '2010', '2201010', '10102020', 'N 2020 ND', 'Malik', 'Jl. Saja Dulu', 4, 2230000, 5230000, 120000, 15000, 'Dikantor', '2023-07-16 04:34:50', '2023-07-18 23:18:11');
-INSERT INTO `tbl_mobil` VALUES (4, 4, 'Nisi velit qui tota', '78', '67', '72', 'Tempore voluptatem', 'Autem incididunt sun', 'Ea voluptatem do vol', 3, 93, 74, 81, 92, 'Disewakan', '2023-07-17 05:21:26', NULL);
-INSERT INTO `tbl_mobil` VALUES (6, 2, 'Ab Nam non exercitat', '26', '70', '3', 'Maiores unde sed lab', 'Ipsam similique exce', 'Consectetur volupta', 4, 19, 39, 65, 11, 'Disewakan', '2023-07-20 05:36:38', NULL);
-INSERT INTO `tbl_mobil` VALUES (7, 4, 'Odio sed ut odio in', '35', '3', '44', 'Pariatur Mollit ill', 'Similique mollit obc', 'Repellendus Nemo im', 3, 19, 32, NULL, 89, 'Dikantor', '2023-07-21 12:21:00', NULL);
 
 -- ----------------------------
 -- Table structure for tbl_order_vendor
@@ -122,16 +117,11 @@ CREATE TABLE `tbl_pabrikan`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tbl_pabrikan
 -- ----------------------------
-INSERT INTO `tbl_pabrikan` VALUES (2, 'Honda', '2023-07-15 11:40:37', NULL);
-INSERT INTO `tbl_pabrikan` VALUES (3, 'Toyota', '2023-07-15 11:41:01', NULL);
-INSERT INTO `tbl_pabrikan` VALUES (4, 'Mitsubishi', '2023-07-15 11:41:33', NULL);
-INSERT INTO `tbl_pabrikan` VALUES (5, 'Hyundai', '2023-07-15 11:41:40', NULL);
-INSERT INTO `tbl_pabrikan` VALUES (6, 'Suzuki', '2023-07-15 11:41:58', '2023-07-15 18:55:59');
 
 -- ----------------------------
 -- Table structure for tbl_pelanggan
@@ -162,12 +152,11 @@ CREATE TABLE `tbl_pelanggan`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_pelanggan
 -- ----------------------------
-INSERT INTO `tbl_pelanggan` VALUES (16, 'Sint eaque ut rem e', '1991-10-26', 'Magna dolorem non do', 'Perempuan', '83', 'Nulla iste inventore', 'gambar/gambar1_1690568898.png', 'Ea consequuntur aute', 'gambar/gambar2_1690568898.png', 'Excepturi blanditiis', 'gambar/gambar3_1690568347.png', 'Ad pariatur Rerum v', 'null', 'Voluptatum culpa opt', 'null', 'Obcaecati deleniti q', 'null', 'null', 'Aktif', 1, '2023-07-28 06:19:07', '2023-07-29 01:28:18');
 
 -- ----------------------------
 -- Table structure for tbl_pelanggan_rental_lain
@@ -187,13 +176,11 @@ CREATE TABLE `tbl_pelanggan_rental_lain`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_pelanggan_rental_lain
 -- ----------------------------
-INSERT INTO `tbl_pelanggan_rental_lain` VALUES (2, 'Qui esse velit delec', 'BBBB', '1973-01-20', 'Adipisicing autem ve', 'Laki-laki', '66', 'Excepturi sunt qui i', 'Blokir', 4, '2023-07-21 06:32:19', '2023-07-22 01:52:31');
-INSERT INTO `tbl_pelanggan_rental_lain` VALUES (4, 'Quo ut nihil dolorib', 'Ut in consectetur N', '1974-08-25', 'Quis voluptas except', 'Perempuan', '43', 'Aut incidunt mollit', 'Blokir', 4, '2023-07-21 06:48:38', '2023-07-22 01:52:40');
 
 -- ----------------------------
 -- Table structure for tbl_pengguna
@@ -210,12 +197,13 @@ CREATE TABLE `tbl_pengguna`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tbl_pengguna
 -- ----------------------------
 INSERT INTO `tbl_pengguna` VALUES (1, 'Developer', 'Malang', 'developer@email.com', '$2y$10$psfZay83FLt.d13fo1WfB.B8.ifreXeXmXABCgO8.djYNFzhAO6Gi', 1, 1, NULL, '2023-07-15 00:17:27');
+INSERT INTO `tbl_pengguna` VALUES (2, 'Admin', 'Bali', 'admin@admin.com', '$2y$10$Z6leiwRIB3H7ZTkDBKHWKe6uWB/6HppWWFMwSc9vGYaDrr6Gf2JTq', 3, 12, '2023-08-20 05:41:41', NULL);
 
 -- ----------------------------
 -- Table structure for tbl_persewaan
@@ -228,7 +216,7 @@ CREATE TABLE `tbl_persewaan`  (
   `mobil` int NULL DEFAULT NULL,
   `pelanggan` int NULL DEFAULT NULL,
   `tanggal_sewa` timestamp NULL DEFAULT NULL,
-  `tipe_sewa` enum('Perjam','Perhari','Perminggu','Perbulan') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tipe_sewa` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `pesan_dari` int NULL DEFAULT NULL,
   `dikirim` enum('Iya','Tidak') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `alamat_pengiriman` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
@@ -240,7 +228,7 @@ CREATE TABLE `tbl_persewaan`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_persewaan

@@ -21,14 +21,13 @@ if (isset($_POST['submit'])) {
     $alamat = !empty($_POST['alamat']) ? $_POST['alamat'] : 'null';
     $kantor = !empty($_POST['kantor']) ? $_POST['kantor'] : 'null';
     $harga_perbulan = !empty($_POST['harga_perbulan']) ? $_POST['harga_perbulan'] : 'null';
-    $harga_perminggu = !empty($_POST['harga_perminggu']) ? $_POST['harga_perminggu'] : 'null';
     $harga_perhari = !empty($_POST['harga_perhari']) ? $_POST['harga_perhari'] : 'null';
     $harga_perjam = !empty($_POST['harga_perjam']) ? $_POST['harga_perjam'] : 'null';
     $status = !empty($_POST['status']) ? $_POST['status'] : 'null';
     $created_at = date("Y-m-d h:i:s");
 
-    $sql = "INSERT INTO tbl_mobil (pabrikan, merek, tahun, nomor_rangka, nomor_mesin, nopol, pemilik, alamat, kantor, harga_perbulan, harga_perminggu, harga_perhari, harga_perjam, `status`, created_at)
-            VALUES ($pabrikan, '$merek', $tahun, '$nomor_rangka', '$nomor_mesin', '$nopol', '$pemilik', '$alamat', $kantor, $harga_perbulan, $harga_perminggu, $harga_perhari, $harga_perjam, '$status', '$created_at')";
+    $sql = "INSERT INTO tbl_mobil (pabrikan, merek, tahun, nomor_rangka, nomor_mesin, nopol, pemilik, alamat, kantor, harga_perbulan, harga_perhari, harga_perjam, `status`, created_at)
+            VALUES ($pabrikan, '$merek', $tahun, '$nomor_rangka', '$nomor_mesin', '$nopol', '$pemilik', '$alamat', $kantor, $harga_perbulan, $harga_perhari, $harga_perjam, '$status', '$created_at')";
 
     if (mysqli_query($conn, $sql)) {
         mysqli_close($conn);
@@ -147,12 +146,6 @@ $result_pabrikan = mysqli_query($conn, $sql_pabrikan);
                                                 <div class="form-group">
                                                     <label for="harga-perbulan-column">Harga Sewa Perbulan</label>
                                                     <input type="number" id="harga-perbulan-column" class="form-control" placeholder="Masukkan harga sewa perbulan" name="harga_perbulan" data-parsley-required="false">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="harga-perminggu-column">Harga Sewa Perminggu</label>
-                                                    <input type="number" id="harga-perminggu-column" class="form-control" placeholder="Masukkan harga sewa perminggu" name="harga_perminggu" data-parsley-required="false">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
