@@ -14,7 +14,7 @@
  Date: 21/08/2023 01:02:30
 */
 
-SET NAMES utf8mb4;
+SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
@@ -211,24 +211,24 @@ INSERT INTO `tbl_pengguna` VALUES (2, 'Admin', 'Bali', 'admin@admin.com', '$2y$1
 DROP TABLE IF EXISTS `tbl_persewaan`;
 CREATE TABLE `tbl_persewaan`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nomor_order` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `nomor_order` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `kantor` int NULL DEFAULT NULL,
   `mobil` int NULL DEFAULT NULL,
   `pelanggan` int NULL DEFAULT NULL,
   `tanggal_sewa` timestamp NULL DEFAULT NULL,
-  `tipe_sewa` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tipe_sewa` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `pesan_dari` int NULL DEFAULT NULL,
-  `dikirim` enum('Iya','Tidak') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `alamat_pengiriman` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `dikirim` enum('Iya','Tidak') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `alamat_pengiriman` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `mulai_sewa` timestamp NULL DEFAULT NULL,
   `selesai_sewa` timestamp NULL DEFAULT NULL,
   `potongan_harga` int NULL DEFAULT NULL,
   `total_harga` int NULL DEFAULT NULL,
-  `status_sewa` enum('Moving','Extend','Garage','Cancel','Order') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `status_sewa` enum('Moving','Extend','Garage','Cancel','Order') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_persewaan
