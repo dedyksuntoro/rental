@@ -11,10 +11,10 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 21/08/2023 01:02:30
+ Date: 23/08/2023 21:41:02
 */
 
-SET NAMES utf8;
+SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
@@ -82,11 +82,12 @@ CREATE TABLE `tbl_mobil`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tbl_mobil
 -- ----------------------------
+INSERT INTO `tbl_mobil` VALUES (1, 1, 'Mobilio', '2020', '123123', '123123', 'D 1221 FF', 'Mario', 'Malang', 3, 2000000, 250000, 20000, 'Dikantor', '2023-08-21 03:30:15', NULL);
 
 -- ----------------------------
 -- Table structure for tbl_order_vendor
@@ -117,11 +118,12 @@ CREATE TABLE `tbl_pabrikan`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tbl_pabrikan
 -- ----------------------------
+INSERT INTO `tbl_pabrikan` VALUES (1, 'Honda', '2023-08-21 03:28:48', NULL);
 
 -- ----------------------------
 -- Table structure for tbl_pelanggan
@@ -152,11 +154,12 @@ CREATE TABLE `tbl_pelanggan`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_pelanggan
 -- ----------------------------
+INSERT INTO `tbl_pelanggan` VALUES (1, 'Bambang', '2023-08-21', 'Kediri', 'Laki-laki', '010101', 'Alamat', 'gambar/gambar1_1692631677.jpg', '123123', 'gambar/gambar2_1692631677.jpg', '123123', 'gambar/gambar3_1692631677.jpg', '123123', 'null', 'null', 'null', 'null', 'null', 'null', 'Aktif', 3, '2023-08-21 03:27:57', NULL);
 
 -- ----------------------------
 -- Table structure for tbl_pelanggan_rental_lain
@@ -176,11 +179,12 @@ CREATE TABLE `tbl_pelanggan_rental_lain`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_pelanggan_rental_lain
 -- ----------------------------
+INSERT INTO `tbl_pelanggan_rental_lain` VALUES (1, 'Mia', 'Mobil-mobilan', '2023-08-21', 'Malang', 'Perempuan', '123123', 'Malang', 'Aktif', 3, '2023-08-21 03:28:33', NULL);
 
 -- ----------------------------
 -- Table structure for tbl_pengguna
@@ -211,27 +215,28 @@ INSERT INTO `tbl_pengguna` VALUES (2, 'Admin', 'Bali', 'admin@admin.com', '$2y$1
 DROP TABLE IF EXISTS `tbl_persewaan`;
 CREATE TABLE `tbl_persewaan`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nomor_order` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `nomor_order` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `kantor` int NULL DEFAULT NULL,
   `mobil` int NULL DEFAULT NULL,
   `pelanggan` int NULL DEFAULT NULL,
-  `tanggal_sewa` timestamp NULL DEFAULT NULL,
-  `tipe_sewa` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `tanggal_sewa` date NULL DEFAULT NULL,
+  `tipe_sewa` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `pesan_dari` int NULL DEFAULT NULL,
-  `dikirim` enum('Iya','Tidak') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `alamat_pengiriman` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `dikirim` enum('Iya','Tidak') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `alamat_pengiriman` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `mulai_sewa` timestamp NULL DEFAULT NULL,
   `selesai_sewa` timestamp NULL DEFAULT NULL,
   `potongan_harga` int NULL DEFAULT NULL,
   `total_harga` int NULL DEFAULT NULL,
-  `status_sewa` enum('Moving','Extend','Garage','Cancel','Order') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `status_sewa` enum('Moving','Extend','Garage','Cancel','Order') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tbl_persewaan
 -- ----------------------------
+INSERT INTO `tbl_persewaan` VALUES (1, '1692799740', 1, 1, 1, '2023-08-24', 'Perhari', 1, 'Tidak', '', '2023-08-01 12:12:00', '2023-08-24 12:12:00', 50, 2875000, 'Moving', '2023-08-23 02:09:00', '2023-08-23 21:39:32');
 
 SET FOREIGN_KEY_CHECKS = 1;
