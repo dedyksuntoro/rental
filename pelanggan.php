@@ -103,7 +103,8 @@ if (isset($_POST['delete'])) {
                                                 tbl_kantor.nama_kantor
                                             FROM
                                                 tbl_pelanggan
-                                            LEFT JOIN tbl_kantor ON tbl_kantor.id = tbl_pelanggan.kantor";
+                                            LEFT JOIN tbl_kantor ON tbl_kantor.id = tbl_pelanggan.kantor
+                                            WHERE tbl_pelanggan.nama_rentcar IS NULL";
                                     $result = mysqli_query($conn, $sql);
                                     $number = 1;
                                     if (mysqli_num_rows($result) > 0) {

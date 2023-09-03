@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
     $status_pelanggan = !empty($_POST['status_pelanggan']) ? $_POST['status_pelanggan'] : 'null';
     $created_at = date("Y-m-d h:i:s");
 
-    $sql = "INSERT INTO tbl_pelanggan_rental_lain (nama_pelanggan, nama_rentcar, tgl_lahir_pelanggan, tempat_lahir_pelanggan, jenis_kelamin_pelanggan, no_telp_pelanggan, alamat_pelanggan, kantor, status_pelanggan, created_at)
+    $sql = "INSERT INTO tbl_pelanggan (nama_pelanggan, nama_rentcar, tgl_lahir_pelanggan, tempat_lahir_pelanggan, jenis_kelamin_pelanggan, no_telp_pelanggan, alamat_pelanggan, kantor, status_pelanggan, created_at)
             VALUES ('$nama_pelanggan', '$nama_rentcar', '$tgl_lahir_pelanggan', '$tempat_lahir_pelanggan', '$jenis_kelamin_pelanggan', '$no_telp_pelanggan', '$alamat_pelanggan', '$kantor', '$status_pelanggan', '$created_at')";
 
     if (mysqli_query($conn, $sql)) {

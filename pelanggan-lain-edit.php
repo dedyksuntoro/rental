@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
     $kantor = !empty($_POST['kantor']) ? $_POST['kantor'] : 'null';
     $status_pelanggan = !empty($_POST['status_pelanggan']) ? $_POST['status_pelanggan'] : 'null';
 
-    $sql = "UPDATE tbl_pelanggan_rental_lain SET nama_pelanggan = '$nama_pelanggan', nama_rentcar = '$nama_rentcar', tgl_lahir_pelanggan = '$tgl_lahir_pelanggan', tempat_lahir_pelanggan = '$tempat_lahir_pelanggan', jenis_kelamin_pelanggan = '$jenis_kelamin_pelanggan', no_telp_pelanggan = $no_telp_pelanggan, alamat_pelanggan = '$alamat_pelanggan', kantor = $kantor, status_pelanggan = '$status_pelanggan'
+    $sql = "UPDATE tbl_pelanggan SET nama_pelanggan = '$nama_pelanggan', nama_rentcar = '$nama_rentcar', tgl_lahir_pelanggan = '$tgl_lahir_pelanggan', tempat_lahir_pelanggan = '$tempat_lahir_pelanggan', jenis_kelamin_pelanggan = '$jenis_kelamin_pelanggan', no_telp_pelanggan = $no_telp_pelanggan, alamat_pelanggan = '$alamat_pelanggan', kantor = $kantor, status_pelanggan = '$status_pelanggan'
             WHERE id = $id";
 
     if (mysqli_query($conn, $sql)) {
@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
 
 if (isset($_POST['edit'])) {
     $id = $_POST['edit'];
-    $sql_edit = "SELECT * FROM tbl_pelanggan_rental_lain WHERE id = $id";
+    $sql_edit = "SELECT * FROM tbl_pelanggan WHERE id = $id";
     $result = mysqli_query($conn, $sql_edit);
     $row = mysqli_fetch_array($result);
 

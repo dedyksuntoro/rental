@@ -200,7 +200,7 @@ if (isset($_POST['edit'])) {
     $sql_mobil = "SELECT * FROM tbl_mobil";
     $result_mobil = mysqli_query($conn, $sql_mobil);
 
-    $sql_pelanggan = "SELECT * FROM tbl_pelanggan";
+    $sql_pelanggan = "SELECT * FROM tbl_pelanggan WHERE status_pelanggan = 'Aktif'";
     $result_pelanggan = mysqli_query($conn, $sql_pelanggan);
 
     $sql_order_vendor = "SELECT * FROM tbl_order_vendor";
@@ -269,7 +269,7 @@ if (isset($_POST['edit'])) {
                                                         <option value="" disabled>-- Pilih --</option>
                                                         <?php
                                                         while ($row_pelanggan = mysqli_fetch_array($result_pelanggan)) {
-                                                            echo "<option " . ($row_pelanggan['id'] == $row['pelanggan'] ? "selected" : "") . " value='" . $row_pelanggan['id'] . "'>" . $row_pelanggan['nama_pelanggan'] . "</option>";
+                                                            echo "<option " . ($row_pelanggan['id'] == $row['pelanggan'] ? "selected" : "") . " value='" . $row_pelanggan['id'] . "'>" . $row_pelanggan['nama_pelanggan'] . ' ' . ($row_pelanggan['nama_rentcar'] != null ? '- ' . $row_pelanggan['nama_rentcar'] : '') . "</option>";
                                                         }
                                                         ?>
                                                     </select>

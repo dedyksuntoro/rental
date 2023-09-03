@@ -13,7 +13,7 @@ if ($_GET['pelanggan-lain'] != 'active') {
 if (isset($_POST['delete'])) {
     $id = $_POST['delete'];
 
-    $sql_delete = "DELETE FROM tbl_pelanggan_rental_lain WHERE id = $id";
+    $sql_delete = "DELETE FROM tbl_pelanggan WHERE id = $id";
 
     if (mysqli_query($conn, $sql_delete)) {
         $_SESSION['pesannya'] = '<div class="alert alert-light-success color-success"><i class="bi bi-check-circle"></i> Data berhasil dihapus.</div>';
@@ -59,19 +59,20 @@ if (isset($_POST['delete'])) {
                                 <div class="card-body">
                                     <?php
                                     $sql = "SELECT
-                                                tbl_pelanggan_rental_lain.id,
-                                                tbl_pelanggan_rental_lain.nama_pelanggan,
-                                                tbl_pelanggan_rental_lain.nama_rentcar,
-                                                tbl_pelanggan_rental_lain.tgl_lahir_pelanggan,
-                                                tbl_pelanggan_rental_lain.tempat_lahir_pelanggan,
-                                                tbl_pelanggan_rental_lain.jenis_kelamin_pelanggan,
-                                                tbl_pelanggan_rental_lain.no_telp_pelanggan,
-                                                tbl_pelanggan_rental_lain.alamat_pelanggan,
-                                                tbl_pelanggan_rental_lain.status_pelanggan,
+                                                tbl_pelanggan.id,
+                                                tbl_pelanggan.nama_pelanggan,
+                                                tbl_pelanggan.nama_rentcar,
+                                                tbl_pelanggan.tgl_lahir_pelanggan,
+                                                tbl_pelanggan.tempat_lahir_pelanggan,
+                                                tbl_pelanggan.jenis_kelamin_pelanggan,
+                                                tbl_pelanggan.no_telp_pelanggan,
+                                                tbl_pelanggan.alamat_pelanggan,
+                                                tbl_pelanggan.status_pelanggan,
                                                 tbl_kantor.nama_kantor
                                             FROM
-                                                tbl_pelanggan_rental_lain
-                                            LEFT JOIN tbl_kantor ON tbl_kantor.id = tbl_pelanggan_rental_lain.kantor";
+                                            tbl_pelanggan
+                                            LEFT JOIN tbl_kantor ON tbl_kantor.id = tbl_pelanggan.kantor
+                                            WHERE tbl_pelanggan.nama_rentcar IS NOT NULL";
                                     $result = mysqli_query($conn, $sql);
                                     $number = 1;
                                     if (mysqli_num_rows($result) > 0) {
